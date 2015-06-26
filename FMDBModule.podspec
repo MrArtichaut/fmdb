@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'standard'
 
   s.subspec 'common' do |ss|
+    ss.library = 'sqlite3'
     ss.source_files = 'src/fmdb/FM*.{h,m}'
     ss.private_header_files = 'src/fmdb/*Private.h'
     ss.exclude_files = 'src/fmdb.m'
