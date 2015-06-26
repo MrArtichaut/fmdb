@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name = 'FMDB'
+  s.name = 'FMDBModule'
   s.version = '2.5'
   s.summary = 'A Cocoa / Objective-C wrapper around SQLite.'
   s.homepage = 'https://github.com/ccgus/fmdb'
   s.license = 'MIT'
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
-  s.source = { :git => 'https://github.com/ccgus/fmdb.git', :tag => 'v2.5' }
+  s.source = { :git => 'https://github.com/MrArtichaut/fmdb.git' }
   s.requires_arc = true
 
   s.default_subspec = 'standard'
@@ -19,19 +19,19 @@ Pod::Spec.new do |s|
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'
-    ss.dependency 'FMDB/common'
+    ss.dependency 'FMDBModule/common'
   end
 
   # use the built-in library version of sqlite3 with custom FTS tokenizer source files
   s.subspec 'FTS' do |ss|
     ss.source_files = 'src/extra/fts3/*.{h,m}'
-    ss.dependency 'FMDB/standard'
+    ss.dependency 'FMDBModule/standard'
   end
 
   # use a custom built version of sqlite3
   s.subspec 'standalone' do |ss|
     ss.default_subspec = 'default'
-    ss.dependency 'FMDB/common'
+    ss.dependency 'FMDBModule/common'
 
     ss.subspec 'default' do |sss|
       sss.dependency 'sqlite3'
@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
   # use SQLCipher and enable -DSQLITE_HAS_CODEC flag
   s.subspec 'SQLCipher' do |ss|
     ss.dependency 'SQLCipher'
-    ss.dependency 'FMDB/common'
+    ss.dependency 'FMDBModule/common'
     ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
   end
 
