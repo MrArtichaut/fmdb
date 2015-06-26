@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'common' do |ss|
     ss.source_files = 'src/fmdb/FM*.{h,m}'
+    ss.private_header_files = 'src/fmdb/*Private.h'
     ss.exclude_files = 'src/fmdb.m'
   end
 
@@ -31,7 +32,7 @@ Pod::Spec.new do |s|
   s.subspec 'standalone' do |ss|
     ss.default_subspec = 'default'
     ss.dependency 'FMDB/common'
-    
+
     ss.subspec 'default' do |sss|
       sss.dependency 'sqlite3'
     end
@@ -49,5 +50,5 @@ Pod::Spec.new do |s|
     ss.dependency 'FMDB/common'
     ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC' }
   end
-  
+
 end
